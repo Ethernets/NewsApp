@@ -7,8 +7,8 @@ import retrofit2.Retrofit
 import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Query
-import ru.osport.newsapi.models.Article
-import ru.osport.newsapi.models.Response
+import ru.osport.newsapi.models.ArticleDTO
+import ru.osport.newsapi.models.ResponseDTO
 import ru.osport.newsapi.utils.ApiKeyInterceptor
 import ru.osport.newsapi.utils.Languages
 import ru.osport.newsapi.utils.SortBy
@@ -28,7 +28,7 @@ interface NewsApi {
         @Query("sortBy") sortBy: SortBy? = SortBy.POPULARITY,
         @Query("pageSize") @IntRange(from = 1, to = 20) pageSize: Int? = 20,
         @Query("page") @IntRange(from = 1) page: Int? = 1,
-    ): Result<Response<Article>>
+    ): Result<ResponseDTO<ArticleDTO>>
 }
 
 fun NewsApi(
