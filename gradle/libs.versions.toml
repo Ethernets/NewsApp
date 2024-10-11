@@ -16,6 +16,8 @@ kotlinxSerializationJson = "1.7.3"
 andridxAnnotation = "1.9.0-rc01"
 retrofitAdaptersResult = "1.0.12"
 roomVersion = "2.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 
 [libraries]
@@ -44,6 +46,8 @@ androidx-room = {group = "androidx.room", name = "room-runtime", version.ref = "
 androidx-room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "roomVersion"}
 androidx-lifecycle-viewmodel-ktx = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewmodel-compose = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 
 [plugins]
