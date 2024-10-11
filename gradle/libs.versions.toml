@@ -42,12 +42,10 @@ kotlinx-coroutines-android = {group = "org.jetbrains.kotlinx", name = "kotlinx-c
 kotlinx-serialization-json = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson"}
 androidx-annotation = {group = "androidx.annotation", name = "annotation", version.ref = "andridxAnnotation"}
 retrofit-adapters-result = {group = "com.github.skydoves", name = "retrofit-adapters-result", version.ref = "retrofitAdaptersResult"}
-androidx-room = {group = "androidx.room", name = "room-runtime", version.ref = "roomVersion"}
+androidx-room = {group = "androidx.room", name = "room-ktx", version.ref = "roomVersion"}
 androidx-room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "roomVersion"}
 androidx-lifecycle-viewmodel-ktx = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewmodel-compose = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 
 [plugins]

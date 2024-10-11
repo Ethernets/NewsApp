@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "articles")
 data class ArticleDBO(
     @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo("source") @Embedded val source: SourceDBO,
+    @Embedded(prefix = "source.") val source: SourceDBO,
     @ColumnInfo("author") val author: String,
     @ColumnInfo("content") val content: String,
     @ColumnInfo("description") val description: String,

@@ -1,4 +1,4 @@
-package ru.osport.newsmain.model
+package ru.osport.news.data.model
 
 data class Article(
     val source: Source,
