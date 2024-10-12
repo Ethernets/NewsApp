@@ -1,17 +1,16 @@
 package ru.osport.news.data.util
 
-sealed class RequestResult<out E>(internal val data: E? = null) {
-    class inProgress<E>(data: E? = null) : RequestResult<E>(data)
+sealed class RequestResult<out E: Any>(val data: E? = null) {
+    class inProgress<E: Any>(data: E? = null) : RequestResult<E>(data)
     class Success<E: Any>(data: E) : RequestResult<E>(data)
-    class Error<E>(data: E? = null) : RequestResult<E>()
+    class Error<E: Any>(data: E? = null, val error: Throwable? = null) : RequestResult<E>(data)
 }
 
-internal fun <T : Any> RequestResult<T?>.requireData(): T = checkNotNull(data)
-internal fun <I, O > RequestResult<I>.map(mapper: (I) -> O): RequestResult<O> {
+fun <I: Any, O: Any > RequestResult<I>.map(mapper: (I) -> O): RequestResult<O> {
     return when (this) {
         is RequestResult.Success -> {
             val outData: O = mapper(checkNotNull(data))
-            RequestResult.Success(checkNotNull(outData))
+            RequestResult.Success(outData)
         }
         is RequestResult.inProgress -> RequestResult.inProgress(data?.let(mapper))
         is RequestResult.Error -> RequestResult.Error(data?.let(mapper))
