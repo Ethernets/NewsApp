@@ -16,8 +16,7 @@ kotlinxSerializationJson = "1.7.3"
 andridxAnnotation = "1.9.0-rc01"
 retrofitAdaptersResult = "1.0.12"
 roomVersion = "2.6.1"
-appcompat = "1.7.0"
-material = "1.12.0"
+dagger = "2.52"
 
 
 [libraries]
@@ -46,7 +45,10 @@ androidx-room = {group = "androidx.room", name = "room-ktx", version.ref = "room
 androidx-room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "roomVersion"}
 androidx-lifecycle-viewmodel-ktx = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewmodel-compose = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
-
+dagger-hilt-android = {group = "com.google.dagger", name = "hilt-android", version.ref = "dagger"}
+dagger-hilt-compile = {group = "com.google.dagger", name = "hilt-compiler", version.ref = "dagger"}
+dagger-android = {group = "com.google.dagger", name = "dagger", version.ref = "dagger"}
+dagger-compile = {group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -56,5 +58,6 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 kotlin-serilization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+dagger-hilt-plugin = {id = "com.google.dagger.hilt.android", version.ref = "dagger"}
 
 

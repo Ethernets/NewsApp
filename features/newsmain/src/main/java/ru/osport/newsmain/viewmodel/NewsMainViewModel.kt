@@ -1,27 +1,31 @@
 package ru.osport.newsmain.viewmodel
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
-import ru.osport.news.data.ArticlesRepository
+import kotlinx.coroutines.flow.stateIn
 import ru.osport.news.data.util.RequestResult
 import ru.osport.newsmain.model.Article
+import ru.osport.newsmain.usecases.GetAllArticlesUseCase
+import javax.inject.Inject
+import javax.inject.Provider
 
-internal class NewsMainViewModel(
-    private val repository: ArticlesRepository,
+internal class NewsMainViewModel @Inject constructor(
+    getAllArticlesUseCase: Provider<GetAllArticlesUseCase>,
 ) : ViewModel() {
-    private val _state: MutableStateFlow<State> = repository.getAll()
-        .map { requestResult -> requestResult.toState() }
-    val state: StateFlow<State>
-        get() = _state.asStateFlow()
+    val state: StateFlow<State> = getAllArticlesUseCase.get().invoke()
+        .map { it.toState() }
+        .stateIn(viewModelScope, SharingStarted.Lazily, State.Empty)
 }
+
+
 
 private fun RequestResult<List<Article>>.toState(): State {
     return when (this) {
         is RequestResult.inProgress -> State.Loading(data ?: emptyList())
-        is RequestResult.Success -> State.Success(checkNotNull(data))
+        is RequestResult.Success -> State.Success(data)
         is RequestResult.Error -> State.Error()
     }
 }

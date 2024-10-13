@@ -59,7 +59,7 @@ class ArticlesRepository(
         val apiRequest = flow { emit(api.getEverything()) }
             .onEach { result ->
                 if (result.isSuccess) {
-                    saveNetResponseToCache(checkNotNull(result.getOrThrow()).articles)
+                    saveNetResponseToCache(result.getOrThrow().articles)
                 }
             }.map { it.toRequestResult() }
 
