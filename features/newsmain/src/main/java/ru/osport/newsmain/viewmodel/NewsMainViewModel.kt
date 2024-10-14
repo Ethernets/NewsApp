@@ -2,6 +2,7 @@ package ru.osport.newsmain.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
@@ -12,6 +13,7 @@ import ru.osport.newsmain.usecases.GetAllArticlesUseCase
 import javax.inject.Inject
 import javax.inject.Provider
 
+@HiltViewModel
 internal class NewsMainViewModel @Inject constructor(
     getAllArticlesUseCase: Provider<GetAllArticlesUseCase>,
 ) : ViewModel() {

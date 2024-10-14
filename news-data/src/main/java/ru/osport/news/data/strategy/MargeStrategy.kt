@@ -12,9 +12,9 @@ internal class RequestResponseMargeStrategy<T: Any>: MargeStrategy<RequestResult
         server: RequestResult<T>
     ): RequestResult<T> {
         return when{
-            cache is RequestResult.Success && server is RequestResult.Success -> {
+          /*  cache is RequestResult.Success && server is RequestResult.Success -> {
 
-            }
+            }*/
             cache is RequestResult.Error && server is RequestResult.Error -> {
                 return RequestResult.Error()
             }
@@ -24,21 +24,21 @@ internal class RequestResponseMargeStrategy<T: Any>: MargeStrategy<RequestResult
             cache is RequestResult.Success && server is RequestResult.Error -> {
                 merge(cache, server)
             }
-            cache is RequestResult.Error && server is RequestResult.Success -> {
+        /*    cache is RequestResult.Error && server is RequestResult.Success -> {
 
-            }
+            }*/
             cache is RequestResult.Success && server is RequestResult.inProgress -> {
                 merge(cache, server)
             }
             cache is RequestResult.inProgress && server is RequestResult.Success -> {
                 merge(cache, server)
             }
-            cache is RequestResult.Error && server is RequestResult.inProgress -> {
+     /*       cache is RequestResult.Error && server is RequestResult.inProgress -> {
 
             }
             cache is RequestResult.inProgress && server is RequestResult.Error -> {
 
-            }
+            }*/
             else -> {
                 return RequestResult.Error()
             }

@@ -1,5 +1,6 @@
 package ru.osport.news.data
 
+import jakarta.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.combine
@@ -21,8 +22,7 @@ import ru.osport.newsapi.models.ResponseDTO
 import ru.osport.newsdatabase.NewsDataBase
 import ru.osport.newsdatabase.models.ArticleDBO
 
-
-class ArticlesRepository(
+class ArticlesRepository @Inject constructor(
     private val database: NewsDataBase,
     private val api: NewsApi,
 ) {
