@@ -9,7 +9,7 @@ import ru.osport.news.data.util.map
 import ru.osport.newsmain.model.Article
 import ru.osport.news.data.model.Article as DataArticle
 
-class GetAllArticlesUseCase @Inject constructor(private val repository: ArticlesRepository) {
+internal class GetAllArticlesUseCase @Inject constructor(private val repository: ArticlesRepository) {
 
     operator fun invoke(): Flow<RequestResult<List<Article>>> {
         return repository.getAll()
@@ -22,5 +22,14 @@ class GetAllArticlesUseCase @Inject constructor(private val repository: Articles
 }
 
 private fun DataArticle.toUiArticle(): Article {
-    TODO("Not yet implemented")
+    return Article(
+        id = cacheId,
+        author = author,
+        content = content,
+        description = description,
+        publishedAt = publishedAt,
+        title = title,
+        url = url,
+        urlToImage = urlToImage
+    )
 }

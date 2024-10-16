@@ -1,6 +1,7 @@
 package ru.osport.news.data.model
 
 data class Article(
+    val cacheId: Long = 0L,
     val source: Source,
     val author: String,
     val content: String,

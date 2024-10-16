@@ -6,7 +6,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import ru.osport.news.data.ArticlesRepository
+import okhttp3.OkHttpClient
+import ru.osport.news_core.AppDispatchers
 import ru.osport.newsapi.NewsApi
 import ru.osport.newsapp.BuildConfig
 import ru.osport.newsdatabase.NewsDataBase
@@ -18,7 +19,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsApi(): NewsApi{
+    fun provideNewsApi(): NewsApi {
         return NewsApi(
             baseUrl = BuildConfig.NEWS_BASE_URL,
             apiKey = BuildConfig.NEWS_API_KEY,
@@ -27,8 +28,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsDatabase(@ApplicationContext context: Context): NewsDataBase{
-        return NewsDataBase(context)
-    }
+    fun provideNewsDatabase(@ApplicationContext context: Context): NewsDataBase = NewsDataBase(context)
+
+    @Provides
+    @Singleton
+    fun provideAppCoroutinesDispatcher(): AppDispatchers = AppDispatchers()
 
 }

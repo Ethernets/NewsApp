@@ -1,17 +1,12 @@
 package ru.osport.newsmain.model
 
-data class Article(
-    val source: Source,
-    val author: String,
-    val content: String,
-    val description: String,
-    val publishedAt: String,
+internal data class Article(
+    val id: Long,
     val title: String,
+    val author: String,
+    val description: String,
     val url: String,
-    val urlToImage: String
-)
-
-data class Source(
-    val id: String,
-    val name: String
+    val urlToImage: String,
+    val content: String,
+    val publishedAt: String,
 )

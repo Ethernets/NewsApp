@@ -18,8 +18,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "NEWS_API_KEY", "\"\"")
-        buildConfigField("String", "NEWS_BASE_URL", "\"\"")
+        buildConfigField("String", "NEWS_API_KEY", "\"2577533b9ce848039425bb57d6f2616b\"")
+        buildConfigField("String", "NEWS_BASE_URL", "\"https://newsapi.org/v2/\"")
     }
 
     buildTypes {
@@ -58,6 +58,7 @@ dependencies {
 
     implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.compile)
+    implementation(libs.okhttp)
 
 
     debugImplementation(libs.androidx.ui.tooling)
@@ -72,5 +73,6 @@ dependencies {
     implementation(project(":newsapi"))
     implementation(project(":database"))
     implementation(project(":news-core"))
+    implementation(project(":features:newsmain"))
 
 }

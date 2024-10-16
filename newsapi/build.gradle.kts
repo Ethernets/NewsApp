@@ -15,4 +15,6 @@ dependencies{
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.annotation)
     implementation(libs.retrofit.adapters.result)
+    implementation(libs.okhttp)
+    implementation(libs.retrofit.converter.gson)
 }

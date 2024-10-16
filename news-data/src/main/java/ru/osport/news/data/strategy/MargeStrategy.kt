@@ -33,12 +33,12 @@ internal class RequestResponseMargeStrategy<T: Any>: MargeStrategy<RequestResult
             cache is RequestResult.inProgress && server is RequestResult.Success -> {
                 merge(cache, server)
             }
-     /*       cache is RequestResult.Error && server is RequestResult.inProgress -> {
-
-            }
-            cache is RequestResult.inProgress && server is RequestResult.Error -> {
+         /*   cache is RequestResult.Error && server is RequestResult.inProgress -> {
 
             }*/
+            cache is RequestResult.inProgress && server is RequestResult.Error -> {
+                merge(cache, server)
+            }
             else -> {
                 return RequestResult.Error()
             }
@@ -61,6 +61,10 @@ internal class RequestResponseMargeStrategy<T: Any>: MargeStrategy<RequestResult
     }
     private fun merge(cache: RequestResult.Success<T>, server: RequestResult.Error<T>): RequestResult<T> {
         return RequestResult.Error(data = cache.data, error = server.error)
+    }
+
+    private fun merge(cache: RequestResult.inProgress<T>, server: RequestResult.Error<T>): RequestResult<T> {
+        return RequestResult.Error(data = cache.data ?: server.data, error = server.error)
     }
 
 }

@@ -28,13 +28,13 @@ private fun RequestResult<List<Article>>.toState(): State {
     return when (this) {
         is RequestResult.inProgress -> State.Loading(data ?: emptyList())
         is RequestResult.Success -> State.Success(data)
-        is RequestResult.Error -> State.Error()
+        is RequestResult.Error -> State.Error(data ?: emptyList())
     }
 }
 
-sealed class State {
-    class Loading(val article: List<Article>?) : State()
-    class Error : State()
-    class Success(val article: List<Article>) : State()
+internal sealed class State {
+    class Loading(val articles: List<Article>?) : State()
+    class Error(val articles: List<Article>?): State()
+    class Success(val articles: List<Article>) : State()
     data object Empty : State()
 }

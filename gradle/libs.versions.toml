@@ -20,6 +20,7 @@ dagger = "2.52"
 jakartaInject = "2.0.1"
 appcompat = "1.7.0"
 material = "1.12.0"
+okhttpVersion = "4.12.0"
 
 
 [libraries]
@@ -44,6 +45,7 @@ kotlinx-coroutines-android = {group = "org.jetbrains.kotlinx", name = "kotlinx-c
 kotlinx-serialization-json = {group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson"}
 androidx-annotation = {group = "androidx.annotation", name = "annotation", version.ref = "andridxAnnotation"}
 retrofit-adapters-result = {group = "com.github.skydoves", name = "retrofit-adapters-result", version.ref = "retrofitAdaptersResult"}
+retrofit-converter-gson = {group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
 androidx-room = {group = "androidx.room", name = "room-ktx", version.ref = "roomVersion"}
 androidx-room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "roomVersion"}
 androidx-lifecycle-viewmodel-ktx = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
@@ -53,8 +55,7 @@ dagger-hilt-compile = {group = "com.google.dagger", name = "hilt-compiler", vers
 dagger-android = {group = "com.google.dagger", name = "dagger", version.ref = "dagger"}
 dagger-compile = {group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger"}
 jakarta-inject = {group = "jakarta.inject", name = "jakarta.inject-api", version.ref = "jakartaInject"}
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttpVersion"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
