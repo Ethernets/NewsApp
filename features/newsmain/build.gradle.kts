@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.compile)
+    implementation(libs.coil.compose)
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

@@ -3,6 +3,7 @@ package ru.osport.newsmain
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,13 +17,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil3.compose.AsyncImage
+import coil3.compose.AsyncImagePainter
 import dagger.Provides
 import ru.osport.newsmain.model.Article
 import ru.osport.newsmain.viewmodel.NewsMainViewModel
@@ -106,6 +113,23 @@ private fun Articles(articles: List<Article>, modifier: Modifier = Modifier) {
 @Preview
 @Composable
 internal fun Article(@PreviewParameter(ArticlePreviewProvider::class) article: Article, modifier: Modifier = Modifier) {
+    Row {
+        article.urlToImage?.let { imageUrl ->
+            var isImageVisibility by remember { mutableStateOf(true) }
+            if (isImageVisibility) {
+                AsyncImage(
+                    model = imageUrl,
+                    onState = { state ->
+                        if (state is AsyncImagePainter.State.Error) isImageVisibility = false
+                    },
+                    contentDescription = "Article image",
+                    contentScale = ContentScale.Crop,
+                    modifier = modifier.size(150.dp)
+                )
+            }
+        }
+        Spacer(modifier = modifier.size(4.dp))
+    }
     Column {
         Text(
             text = article.title ?: "NO TITLE",
