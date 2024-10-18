@@ -55,10 +55,10 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.okhttp.logging.interceptor)
 
     implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.compile)
-    implementation(libs.okhttp)
 
 
     debugImplementation(libs.androidx.ui.tooling)

@@ -55,7 +55,7 @@ dagger-hilt-compile = {group = "com.google.dagger", name = "hilt-compiler", vers
 dagger-android = {group = "com.google.dagger", name = "dagger", version.ref = "dagger"}
 dagger-compile = {group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger"}
 jakarta-inject = {group = "jakarta.inject", name = "jakarta.inject-api", version.ref = "jakartaInject"}
-okhttp = {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttpVersion"}
+okhttp-logging-interceptor = {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpVersion"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

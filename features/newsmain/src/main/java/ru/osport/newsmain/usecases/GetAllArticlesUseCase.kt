@@ -11,12 +11,9 @@ import ru.osport.news.data.model.Article as DataArticle
 
 internal class GetAllArticlesUseCase @Inject constructor(private val repository: ArticlesRepository) {
 
-    operator fun invoke(): Flow<RequestResult<List<Article>>> {
-        return repository.getAll()
-            .map { requestResult ->
-                requestResult.map { articles ->
-                    articles.map { it.toUiArticle() }
-                }
+    operator fun invoke(query: String): Flow<RequestResult<List<Article>>> {
+        return repository.getAll(query = query).map { requestResult ->
+                requestResult.map { articles -> articles.map { it.toUiArticle() } }
             }
     }
 }

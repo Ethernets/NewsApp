@@ -36,12 +36,25 @@ fun NewsMain(modifier: Modifier = Modifier) {
 @Composable
 internal fun NewsMain(viewModel : NewsMainViewModel, modifier: Modifier = Modifier) {
     val state by viewModel.state.collectAsState()
-    when(val currentState = state){
-        is State.Success -> Articles(currentState.articles, modifier = modifier)
-        is State.Error -> ArticlesWithError(currentState.articles, modifier = modifier)
-        is State.Loading -> ArticlesDuringUpdate(currentState.articles, modifier = modifier)
-        State.Empty -> NewsEmpty()
+    val currentState = state
+    NewsMainContent(currentState, modifier = modifier)
+}
+
+@Composable
+private fun NewsMainContent(
+    currentState: State,
+    modifier: Modifier = Modifier,
+){
+    Column(modifier = modifier) {
+        when(currentState){
+            is State.Success -> Articles(currentState.articles, modifier = modifier)
+            is State.Error -> ArticlesWithError(currentState.articles, modifier = modifier)
+            is State.Loading -> ArticlesDuringUpdate(currentState.articles, modifier = modifier)
+            State.Empty -> NewsEmpty()
+        }
     }
+
+
 }
 
 @Composable
@@ -94,9 +107,19 @@ private fun Articles(articles: List<Article>, modifier: Modifier = Modifier) {
 @Composable
 internal fun Article(@PreviewParameter(ArticlePreviewProvider::class) article: Article, modifier: Modifier = Modifier) {
     Column {
-        Text(text = article.title, style = MaterialTheme.typography.headlineMedium, maxLines = 1)
-        Spacer(modifier = modifier.size(4.dp))
-        Text(text = article.description, style = MaterialTheme.typography.bodyMedium, maxLines = 3)
+        Text(
+            text = article.title ?: "NO TITLE",
+            style = MaterialTheme.typography.headlineMedium,
+            maxLines = 1
+        )
+        if (article.description != null) {
+            Spacer(modifier = modifier.size(4.dp))
+            Text(
+                text = article.description,
+                style = MaterialTheme.typography.bodyMedium,
+                maxLines = 3
+            )
+        }
     }
 }
 
